@@ -4,13 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
     "start": "node index.js"
   },
-  "keywords": [],
   "engines": {
-    "node": "18.16.1"
-  },
+    "node": "18.16.1"},
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
