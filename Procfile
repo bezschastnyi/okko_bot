@@ -1,1 +1,1 @@
-web: index.js
+bot: index.js
