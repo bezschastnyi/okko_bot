@@ -1,6 +1,3 @@
-require('http').createServer().listen(process.env.PORT || 5000).on('request', function (req, res) {
-    res.end('')
-})
 const palyvo = require("./palyvo.js");
 const dobryva = require("./dobryva.js");
 const zerno = require("./zerno.js");
