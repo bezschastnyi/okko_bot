@@ -1,4 +1,4 @@
-require('http').createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
+require('http').createServer().listen(process.env.PORT || 5000).on('request', function (req, res) {
     res.end('')
 })
 const palyvo = require("./palyvo.js");
@@ -38,36 +38,36 @@ bot.on('message', async (msg) => {
     const text = msg.text;
 
     if (text === '/start') {
-        await bot.sendMessage(chatId, 'Вітаємо!', { reply_markup: mainMenuMarkup });
+        await bot.sendMessage(chatId, 'Вітаємо!', {reply_markup: mainMenuMarkup});
     } else if (text === 'Дізнатись ціну палива') {
-        await bot.sendMessage(chatId, `Ціна дизеля: ${palyvo.diesel}`, { reply_markup: backMarkup });
-        await bot.sendMessage(chatId, `Ціна бензина: ${palyvo.petrol}`, { reply_markup: backMarkup });
+        await bot.sendMessage(chatId, `Ціна дизеля: ${palyvo.diesel}`, {reply_markup: backMarkup});
+        await bot.sendMessage(chatId, `Ціна бензина: ${palyvo.petrol}`, {reply_markup: backMarkup});
     } else if (text === 'Дізнатись ціну добрив') {
         const fertilizerMarkup = {
             keyboard: fertilizers.map((fertilizer) => [fertilizer.name]).concat([['Повернутися назад']]),
             resize_keyboard: true,
             one_time_keyboard: true
         };
-        await bot.sendMessage(chatId, 'Оберіть добриво:', { reply_markup: fertilizerMarkup });
+        await bot.sendMessage(chatId, 'Оберіть добриво:', {reply_markup: fertilizerMarkup});
     } else if (text === 'Дізнатись ціну купівлі зерна') {
         const grainMarkup = {
             keyboard: grains.map((grain) => [grain.name]).concat([['Повернутися назад']]),
             resize_keyboard: true,
             one_time_keyboard: true
         };
-        await bot.sendMessage(chatId, 'Оберіть зерно:', { reply_markup: grainMarkup });
+        await bot.sendMessage(chatId, 'Оберіть зерно:', {reply_markup: grainMarkup});
     } else if (text === 'Контакти') {
-        await bot.sendMessage(chatId, 'Контакт: м.Вінниця, вул. Залізнична 13, Микола', { reply_markup: backMarkup });
-        await bot.sendMessage(chatId, '067-144-09-02', { reply_markup: backMarkup });
+        await bot.sendMessage(chatId, 'Контакт: м.Вінниця, вул. Залізнична 13, Микола', {reply_markup: backMarkup});
+        await bot.sendMessage(chatId, '067-144-09-02', {reply_markup: backMarkup});
     } else if (fertilizers.some((fertilizer) => fertilizer.name === text)) {
         const selectedFertilizer = fertilizers.find((fertilizer) => fertilizer.name === text);
-        await bot.sendMessage(chatId, `Ціна добрива ${selectedFertilizer.name}: ${selectedFertilizer.price}`, { reply_markup: backMarkup });
+        await bot.sendMessage(chatId, `Ціна добрива ${selectedFertilizer.name}: ${selectedFertilizer.price}`, {reply_markup: backMarkup});
     } else if (grains.some((grain) => grain.name === text)) {
         const selectedGrain = grains.find((grain) => grain.name === text);
-        await bot.sendMessage(chatId, `Ціна зерна ${selectedGrain.name}: ${selectedGrain.price}`, { reply_markup: backMarkup });
+        await bot.sendMessage(chatId, `Ціна зерна ${selectedGrain.name}: ${selectedGrain.price}`, {reply_markup: backMarkup});
     } else if (text === 'Повернутись назад') {
-        await bot.sendMessage(chatId, 'Ви повернулись в головне меню', { reply_markup: mainMenuMarkup });
+        await bot.sendMessage(chatId, 'Ви повернулись в головне меню', {reply_markup: mainMenuMarkup});
     } else {
-        await bot.sendMessage(chatId, 'Не вдалося зрозуміти вашу команду', { reply_markup: mainMenuMarkup });
+        await bot.sendMessage(chatId, 'Не вдалося зрозуміти вашу команду', {reply_markup: mainMenuMarkup});
     }
 });

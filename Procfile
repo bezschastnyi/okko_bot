@@ -1,1 +1,0 @@
-bot: index.js
