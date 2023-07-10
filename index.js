@@ -1,3 +1,6 @@
+const express = require('express');
+const app = express();
+
 const palyvo = require("./palyvo.js");
 const dobryva = require("./dobryva.js");
 const zerno = require("./zerno.js");
@@ -67,4 +70,9 @@ bot.on('message', async (msg) => {
     } else {
         await bot.sendMessage(chatId, 'Не вдалося зрозуміти вашу команду', {reply_markup: mainMenuMarkup});
     }
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Сервер запущен на порту ${port}`);
 });
