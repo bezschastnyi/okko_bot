@@ -1,15 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@vercel/node"
-    }
-  ],
   "routes": [
-    { "src": "/(.*)", "dest": "/index.js" }
-  ],
-  "env": {
-    "TELEGRAM_BOT_TOKEN": "6198421354:AAGbCDVx9Ib2WYebnuJby1q4_7PbTXG9Tdo"
-  }
+    {
+      "src": "/index",
+      "methods": ["POST"],
+      "dest": "/api/telegram"
+    }
+  ]
 }
